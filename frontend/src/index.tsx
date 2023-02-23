@@ -10,6 +10,7 @@ import {
 } from 'react-router-dom';
 import LoginForm from './components/loginForm';
 import Home from './components/home';
+import SignupForm from './components/signupForm';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -22,6 +23,7 @@ root.render(
         <Route path='/' element={<App />} >
           <Route index element={<Home />} />
           <Route path='login' element={<LoginForm />} />
+          <Route path='signup' element={<SignupForm />} />
         </Route>
       </Routes>
     </BrowserRouter>

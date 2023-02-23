@@ -3,7 +3,7 @@ import SigninTemplate from "./signinTemplate";
 export default function LoginForm() {
 
     return (
-        <SigninTemplate title="Log in" />
+        <SigninTemplate type="@signin/login" />
     );
 
 }

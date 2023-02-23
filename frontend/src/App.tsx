@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import './styles/App.css';
 import { getCookie } from './tools/cookieManager';
 import LoginForm from './components/loginForm';
