@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Signika Negative', 'Segoe UI', 'Roboto';
+}
+
+@layer components {
+  /* Clases De Formulario de Signin */
+  .form-row-signin {
+    @apply w-full;
+  }
+
+  .form-label-signin {
+    @apply h-14 flex items-end justify-between dark-mode-text dark:clear-mode-text flex-row flex-nowrap w-full px-1;
+  }
+
+  .form-input-signin {
+    @apply h-12 w-full;
+  }
+
+  .form-input-signin > input {
+    @apply w-full h-full border border-solid rounded-md border-neutral-300 hover:border-neutral-400 
+    focus:border-red-600 focus:border
+    py-2 px-3 clear-mode dark:dark-mode dark-mode-text dark:clear-mode-text;
+  }
+
+  .form-button-signin {
+    @apply h-32 w-full flex items-end justify-center;
+  }
+  
+  .form-button-signin > button {
+    @apply h-12 w-full rounded-3xl dark-mode dark:clear-mode clear-mode-text dark:dark-mode-text;
+  }
+
+  .form-action-signin {
+    @apply h-10 w-full flex justify-center items-end;
+  }
+
+  .form-action-signin > span {
+    @apply dark-mode-text dark:clear-mode-text cursor-pointer text-sm;
+  }
+
+  .form-error-message {
+    @apply text-red-600 text-xs mx-1;
+  }
+
+  /* Clases para manejar los estilos de los modos de luz (Claro, Oscuro) */
+  .clear-mode {
+    @apply bg-white;
+  }
+
+  .dark-mode {
+    @apply bg-neutral-800;
+  }
+
+  .clear-mode-text {
+    @apply text-white;
+  }
+
+  .dark-mode-text {
+    @apply text-neutral-800;
+  }
+
+  .dark-mode-shadow {
+    @apply shadow-neutral-700;
+  }
+}
