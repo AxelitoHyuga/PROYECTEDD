@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { BsEyeFill, BsEyeSlashFill } from "react-icons/bs";
+import { VscClose } from "react-icons/vsc";
 import { Link } from "react-router-dom";
 
 interface ErrorMessageStructure {
@@ -37,7 +38,14 @@ export default function SigninTemplate(props: Props) {
                 md:px-12 py-10 px-6 clear-mode dark:dark-mode
             ">
 
-                <div className="text-3xl font-semibold dark-mode-text dark:clear-mode-text">{props.type === '@signin/login' ? 'Log in' : 'Sign up'}</div>
+                <div>
+                    
+                </div>
+
+                <div className="text-3xl font-semibold dark-mode-text dark:clear-mode-text flex items-center justify-between">
+                    {props.type === '@signin/login' ? 'Log in' : 'Sign up'}
+                    <Link to="/" className="top-1 right-1"><VscClose /></Link>
+                </div>
                 { isSubmitted ? 
 
                 <div className="w-full h-full"></div> : 

@@ -11,6 +11,7 @@ import {
 import LoginForm from './components/loginForm';
 import Home from './components/home';
 import SignupForm from './components/signupForm';
+import PageNotFound404 from './components/404';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -25,6 +26,7 @@ root.render(
           <Route path='login' element={<LoginForm />} />
           <Route path='signup' element={<SignupForm />} />
         </Route>
+        <Route path='*' element={<PageNotFound404 />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
