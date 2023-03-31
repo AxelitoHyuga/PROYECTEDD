@@ -12,24 +12,28 @@ import LoginForm from './components/loginForm';
 import Home from './components/home';
 import SignupForm from './components/signupForm';
 import PageNotFound404 from './components/404';
+import { Provider } from 'react-redux';
+import {store} from './store';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
 root.render(
-  <React.StrictMode>
-    <BrowserRouter >
-      <Routes>
-        <Route path='/' element={<App />} >
-          <Route index element={<Home />} />
-          <Route path='login' element={<LoginForm />} />
-          <Route path='signup' element={<SignupForm />} />
-        </Route>
-        <Route path='*' element={<PageNotFound404 />} />
-      </Routes>
-    </BrowserRouter>
-  </React.StrictMode>
+  <Provider store={store}>
+    <React.StrictMode>
+      <BrowserRouter >
+        <Routes>
+          <Route path='/' element={<App />} >
+            <Route index element={<Home />} />
+            <Route path='login' element={<LoginForm />} />
+            <Route path='signup' element={<SignupForm />} />
+          </Route>
+          <Route path='*' element={<PageNotFound404 />} />
+        </Routes>
+      </BrowserRouter>
+    </React.StrictMode>
+  </Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function

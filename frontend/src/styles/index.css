@@ -2,7 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  width: 100%;
+  overflow-x: hidden;
+}
+
 body {
+  width: 100%;
   margin: 0;
   box-sizing: border-box;
   font-family: 'Signika Negative', 'Segoe UI', 'Roboto';
@@ -29,7 +35,7 @@ body {
   }
 
   .form-button-signin {
-    @apply h-32 w-full flex items-end justify-center;
+    @apply w-full flex items-end justify-center;
   }
   
   .form-button-signin > button {

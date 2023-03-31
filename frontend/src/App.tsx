@@ -1,8 +1,9 @@
 import React from 'react';
 import './styles/App.css';
 import { getCookie } from './tools/cookieManager';
-import LoginForm from './components/loginForm';
 import { Outlet } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
 
   return (
     <>
+      <ToastContainer />
       <Outlet />
     </>
   );
