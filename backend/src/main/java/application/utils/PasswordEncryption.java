@@ -1,4 +1,4 @@
-package rest.tools;
+package application.utils;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
