@@ -17,12 +17,14 @@ public class Task {
     private ObjectId id;
     @Field
     private Date creationDate;
+    @DocumentReference(collection = "Users")
     @Field
-    private String createdBy;
+    private User createdBy;
     @Field
     private Date modificationDate;
+    @DocumentReference(collection = "Users")
     @Field
-    private String modifiedBy;
+    private User modifiedBy;
     @Field
     private String title;
     @Field
@@ -34,6 +36,9 @@ public class Task {
     private List<String> responsible;
     @Field
     private int status;
+    @DocumentReference(collection = "Boards")
+    @Field
+    private Board boardId;
 
     public Task() {
     }
@@ -54,11 +59,11 @@ public class Task {
         this.creationDate = creationDate;
     }
 
-    public String getCreatedBy() {
+    public User getCreatedBy() {
         return createdBy;
     }
 
-    public void setCreatedBy(String createdBy) {
+    public void setCreatedBy(User createdBy) {
         this.createdBy = createdBy;
     }
 
@@ -70,11 +75,11 @@ public class Task {
         this.modificationDate = modificationDate;
     }
 
-    public String getModifiedBy() {
+    public User getModifiedBy() {
         return modifiedBy;
     }
 
-    public void setModifiedBy(String modifiedBy) {
+    public void setModifiedBy(User modifiedBy) {
         this.modifiedBy = modifiedBy;
     }
 
@@ -116,5 +121,22 @@ public class Task {
 
     public void setStatus(int status) {
         this.status = status;
+    }
+
+    public Board getBoardId() {
+        return boardId;
+    }
+
+    public void setBoardId(Board boardId) {
+        this.boardId = boardId;
+    }
+
+    public String toString() {
+        String result = "{\"id\":\"" + id + "\", \"creationDate\":\"" + creationDate + "\", \"createdBy\":\""
+                + createdBy.toString() + "\", \"modificationDate\":\""
+                + modificationDate + "\", \"modifiedBy\":\"" + modifiedBy.toString() + "\", \"title\":\"" + title
+                + "\", \"description\":\"" + description + "\", \"status\":"
+                + status + ", \"boardId\":" + boardId.toString();
+        return result;
     }
 }

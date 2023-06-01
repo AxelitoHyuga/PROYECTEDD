@@ -11,21 +11,18 @@ import java.util.List;
 
 @Document(collection = "Members")
 public class Member {
-    @Id
-    @MongoId
-    private ObjectId id;
-    @Field
     @DocumentReference(collection = "Users")
+    @Field
     private User user;
     @Field
     private List<String> roles;
 
-    public ObjectId getId() {
-        return id;
+    public List<String> getRoles() {
+        return roles;
     }
 
-    public void setId(ObjectId id) {
-        this.id = id;
+    public void setRoles(List<String> roles) {
+        this.roles = roles;
     }
 
     public User getUser() {
@@ -36,11 +33,4 @@ public class Member {
         this.user = user;
     }
 
-    public List<String> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(List<String> roles) {
-        this.roles = roles;
-    }
 }

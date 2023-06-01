@@ -1,18 +1,12 @@
 package application.rest.models;
 
-import application.db.documents.Task;
-
-import java.util.List;
-
 public class Board {
     private String boardId;
     private String name;
-    private List<Task> tasks;
 
-    public Board(String boardId, String name, List<Task> tasks) {
+    public Board(String boardId, String name) {
         this.boardId = boardId;
         this.name = name;
-        this.tasks = tasks;
     }
 
     public String getBoardId() {
@@ -31,11 +25,4 @@ public class Board {
         this.name = name;
     }
 
-    public List<Task> getTasks() {
-        return tasks;
-    }
-
-    public void setTasks(List<Task> tasks) {
-        this.tasks = tasks;
-    }
 }

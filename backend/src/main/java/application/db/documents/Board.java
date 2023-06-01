@@ -8,6 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Field;
 import org.springframework.data.mongodb.core.mapping.MongoId;
 
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 @Document(collection = "Boards")
@@ -17,21 +18,19 @@ public class Board {
     private ObjectId id;
     @Field
     private Date creationDate;
+    @DocumentReference(collection = "Users")
+    @Field
+    private User createdBy;
     @Field
     private Date modificationDate;
-    @DocumentReference(collection = "User")
+    @DocumentReference(collection = "Users")
     @Field
     private User modifiedBy;
+
     @Field
     private String name;
     @Field
-    @DocumentReference(collection = "Members")
     private List<Member> members;
-    @Field
-    private List<String> memberRoles;
-    @Field
-    @DocumentReference(collection = "Tasks")
-    private List<Task> tasks;
 
     public Board() {
     }
@@ -52,6 +51,14 @@ public class Board {
     public Board setCreationDate(Date creationDate) {
         this.creationDate = creationDate;
         return this;
+    }
+
+    public User getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(User createdBy) {
+        this.createdBy = createdBy;
     }
 
     public Date getModificationDate() {
@@ -90,21 +97,19 @@ public class Board {
         return this;
     }
 
-    public List<String> getMemberRoles() {
-        return memberRoles;
+    public String toString() {
+        String result = "{\"id\":\"" + id + "\", \"creationDate\":\"" + creationDate + "\", \"createdBy\":\""
+                + createdBy.toString() + "\", \"modificationDate\":\""
+                + modificationDate + "\", \"modifiedBy\":\"" + modifiedBy.toString() + "\", \"name\":\"" + name
+                + "\", \"members\":[";
+        Iterator<Member> i = this.members.iterator();
+        while (i.hasNext()) {
+            Member element = i.next();
+            result += "{\"userId\":\"" + element.getUser().getId().toString() + "\", \"roles\":\"" + element.getRoles().toString()
+                    + "\"}";
+        }
+        result += "]}";
+        return result;
     }
 
-    public Board setMemberRoles(List<String> memberRoles) {
-        this.memberRoles = memberRoles;
-        return this;
-    }
-
-    public List<Task> getTasks() {
-        return tasks;
-    }
-
-    public Board setTasks(List<Task> tasks) {
-        this.tasks = tasks;
-        return this;
-    }
 }

@@ -25,7 +25,7 @@ public class UserController {
     @Autowired
     MongoTemplate template;
 
-    @PostMapping("/user")
+    @PostMapping("/users")
     public ResponseEntity register(@RequestBody User userData) {
 
         try {

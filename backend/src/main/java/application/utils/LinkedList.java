@@ -134,6 +134,22 @@ public class LinkedList <E> implements Iterable<E> {
         };
     }
 
+    public String toJsonString() {
+        String result = "[";
+        Iterator<E> items = this.iterator();
+
+        while(items.hasNext()) {
+            result += items.next().toString();
+            if(items.hasNext()) {
+                result += ",";
+            }
+        }
+        
+        result += "]";
+        
+
+        return result;
+    }
 }
 
 class Node <E> {
@@ -170,4 +186,5 @@ class Node <E> {
     public void setPrev(Node<E> prev) {
         this.prev = prev;
     }
+
 }
