@@ -43,6 +43,10 @@ public class Task {
     public Task() {
     }
 
+    public Task(String title) {
+        this.title = title;
+    }
+
     public ObjectId getId() {
         return id;
     }
@@ -136,7 +140,7 @@ public class Task {
                 + createdBy.toString() + "\", \"modificationDate\":\""
                 + modificationDate + "\", \"modifiedBy\":\"" + modifiedBy.toString() + "\", \"title\":\"" + title
                 + "\", \"description\":\"" + description + "\", \"status\":"
-                + status + ", \"boardId\":" + boardId.toString();
+                + status + ", \"boardId\":" + boardId.toString() + "}";
         return result;
     }
 }

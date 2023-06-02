@@ -1,5 +1,6 @@
 package application.utils;
 
+import java.util.Comparator;
 import java.util.Iterator;
 
 public class LinkedList <E> implements Iterable<E> {
@@ -110,6 +111,56 @@ public class LinkedList <E> implements Iterable<E> {
 
     public int getSize() {
         return size;
+    }
+
+    public void sort(Comparator<E> comparator) {
+        Node<E> curr = first;
+
+        while (curr != null) {
+            Node<E> min = curr;
+            Node<E> next = curr.getNext();
+
+            while (next != null) {
+                if (comparator.compare(next.getItem(), min.getItem()) < 0) {
+                    min = next;
+                }
+                next = next.getNext();
+            }
+
+            // Intercambiar valores
+            E temp = curr.getItem();
+            curr.setItem(min.getItem());
+            min.setItem(temp);
+
+            curr = curr.getNext();
+        }
+    }
+
+    public E binarySearch(E value, Comparator<E> comparator) throws Exception {
+        int pos = binarySearchRec(value, 0, size - 1, comparator);
+
+        if (pos == -1) {
+            return null;
+        }
+
+        return get(pos);
+    }
+
+    private int binarySearchRec(E value, int ini, int fin, Comparator<E> comparator) throws Exception {
+        if (ini > fin) {
+            return -1;
+        }
+
+        int medio = ini + (fin - ini) / 2;
+        E valorMedio = get(medio);
+
+        if (comparator.compare(valorMedio, value) == 0) {
+            return medio;  // El valor objetivo se encontró en la posición "medio"
+        } else if (comparator.compare(valorMedio, value) < 0) {
+            return binarySearchRec(value, medio + 1, fin, comparator);  // El valor objetivo es mayor, buscar en la mitad derecha
+        } else {
+            return binarySearchRec(value, ini, medio - 1, comparator);  // El valor objetivo es menor, buscar en la mitad izquierda
+        }
     }
 
     public Iterator<E> iterator() {
