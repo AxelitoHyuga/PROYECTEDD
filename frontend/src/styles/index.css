@@ -1,8 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-html {
+ html {
   width: 100%;
   overflow-x: hidden;
 }
@@ -12,66 +8,29 @@ body {
   margin: 0;
   box-sizing: border-box;
   font-family: 'Signika Negative', 'Segoe UI', 'Roboto';
+  background-color: rgb(24, 24, 24);
 }
 
-@layer components {
-  /* Clases De Formulario de Signin */
-  .form-row-signin {
-    @apply w-full;
-  }
+.swal2-popup {
+  background-color: #333;
+  color: #fff;
+}
 
-  .form-label-signin {
-    @apply h-14 flex items-end justify-between dark-mode-text dark:clear-mode-text flex-row flex-nowrap w-full px-1;
-  }
+.swal2-title {
+  color: #fff;
+}
 
-  .form-input-signin {
-    @apply h-12 w-full;
-  }
+.swal2-content {
+  color: #fff;
+}
 
-  .form-input-signin > input {
-    @apply w-full h-full border border-solid rounded-md border-neutral-300 hover:border-neutral-400 
-    focus:border-red-600 focus:border
-    py-2 px-3 clear-mode dark:dark-mode dark-mode-text dark:clear-mode-text;
-  }
+.swal2-confirm,
+.swal2-cancel {
+  color: #fff;
+  background-color: #555;
+}
 
-  .form-button-signin {
-    @apply w-full flex items-end justify-center;
-  }
-  
-  .form-button-signin > button {
-    @apply h-12 w-full rounded-3xl dark-mode dark:clear-mode clear-mode-text dark:dark-mode-text;
-  }
-
-  .form-action-signin {
-    @apply h-10 w-full flex justify-center items-end;
-  }
-
-  .form-action-signin > span {
-    @apply dark-mode-text dark:clear-mode-text cursor-pointer text-sm;
-  }
-
-  .form-error-message {
-    @apply text-red-600 text-xs mx-1;
-  }
-
-  /* Clases para manejar los estilos de los modos de luz (Claro, Oscuro) */
-  .clear-mode {
-    @apply bg-white;
-  }
-
-  .dark-mode {
-    @apply bg-neutral-800;
-  }
-
-  .clear-mode-text {
-    @apply text-white;
-  }
-
-  .dark-mode-text {
-    @apply text-neutral-800;
-  }
-
-  .dark-mode-shadow {
-    @apply shadow-neutral-700;
-  }
+.swal2-confirm:hover,
+.swal2-cancel:hover {
+  background-color: #777;
 }

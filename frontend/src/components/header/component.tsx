@@ -13,7 +13,6 @@ import {
     XMarkIcon,
 } from '@heroicons/react/24/outline'
 import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid';
-import UserCard from './userCard';
 
 export default function Header() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -123,7 +122,7 @@ export default function Header() {
                 </Link>
                 </Popover.Group>
                 <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-                <UserCard isOnMobilePopup={false} />
+                {/* <UserCard isOnMobilePopup={false} /> */}
                 {/* <Link to="/login" className="text-sm font-semibold leading-6 text-gray-900">
                     Log in <span aria-hidden="true">&rarr;</span>
                 </Link> */}
@@ -199,7 +198,7 @@ export default function Header() {
                         </Link>
                     </div>
                     <div className="py-6">
-                        <UserCard isOnMobilePopup={true}/>
+                        {/* <UserCard isOnMobilePopup={true}/> */}
                         {/* <Link
                         to="/login"
                         className="block -mx-3 rounded-lg py-2.5 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"

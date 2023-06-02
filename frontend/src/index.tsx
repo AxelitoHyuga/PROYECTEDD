@@ -8,12 +8,15 @@ import {
   BrowserRouter,
   Routes,
 } from 'react-router-dom';
-import LoginForm from './components/loginForm';
-import Home from './components/home';
-import SignupForm from './components/signupForm';
-import PageNotFound404 from './components/404';
+import PageNotFound404 from './components/404/component';
 import { Provider } from 'react-redux';
 import {store} from './store';
+import SinginForm from './components/signin/component';
+import SinginType from './utils/signinType';
+import Profile from './components/profile/component';
+import { UserContextProvider } from './components/signin/userContext';
+import { ToastContainer } from 'react-toastify';
+import BoardModule from './components/board/component';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -22,15 +25,19 @@ const root = ReactDOM.createRoot(
 root.render(
   <Provider store={store}>
     <React.StrictMode>
-      <BrowserRouter >
-        <Routes>
-          <Route path='/' element={<App />} >
-            <Route index element={<Home />} />
-            <Route path='login' element={<LoginForm />} />
-            <Route path='signup' element={<SignupForm />} />
-          </Route>
-          <Route path='*' element={<PageNotFound404 />} />
-        </Routes>
+        <BrowserRouter>
+          <UserContextProvider>
+            <ToastContainer />
+            <Routes>
+              <Route path='/' element={<App />} >
+                <Route index element={<BoardModule />} />
+                <Route path='profile' element={<Profile />} />
+              </Route>
+              <Route path='/login' element={<React.Fragment><SinginForm type={SinginType.login} /></React.Fragment>} />
+              <Route path='/register' element={<React.Fragment><SinginForm type={SinginType.signup} /></React.Fragment>} />
+              <Route path='*' element={<React.Fragment><PageNotFound404 /></React.Fragment>} />
+            </Routes>
+        </UserContextProvider>
       </BrowserRouter>
     </React.StrictMode>
   </Provider>

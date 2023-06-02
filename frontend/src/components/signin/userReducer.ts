@@ -1,6 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { toast } from 'react-toastify';
-import { login } from '../services/userService';
+import { login } from './userService';
 
 const initialState: UserState = {
     data: {
@@ -13,7 +12,7 @@ const initialState: UserState = {
 
 export const userLoginAsync = createAsyncThunk(
     'user/login',
-    async ({ username, password }: { username: String, password: String }, { rejectWithValue, fulfillWithValue }) => {
+    async ({ username, password }: { username: string, password: string }, { rejectWithValue, fulfillWithValue }) => {
         try {
             const res = await login(username, password);
         
@@ -45,29 +44,19 @@ const userSlice = createSlice({
     extraReducers: (builder) => {
         builder
         .addCase(userLoginAsync.pending, (state) => {
-            toast.loading('Loggin in');
             state = {
                 ...state,
                 requestStatus: 'logging in'
             };
         })
         .addCase(userLoginAsync.fulfilled, (state, action) => {
-            toast.dismiss();
-            toast.success('Logged successful 👌');
             state = {
                 ...state,
                 data: action.payload.data,
                 requestStatus: 'logged successful'
             };
-            console.log(action.payload);
         })
         .addCase(userLoginAsync.rejected, (state, action) => {
-            toast.dismiss();
-            toast.error(`${action.payload} 🤯`, {
-                onClose: () => {
-                    state.requestError = null;
-                }
-            });
             state = {
                 ...state,
                 requestStatus: 'failed to login',
@@ -79,13 +68,13 @@ const userSlice = createSlice({
 
 export const userReducer = userSlice.reducer;
 
-interface UserState {
+export interface UserState {
     data: {
-        userId: String,
-        username: String,
-        token: String,
+        userId: string,
+        username: string,
+        token: string,
     },
     loginIsSubmitted?: boolean,
-    requestStatus?: String,
-    requestError?: String | {} | unknown
+    requestStatus?: string,
+    requestError?: string | {} | unknown
 }

@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    /* Clases De Formulario de Signin */
+    .form-row-signin {
+      @apply w-full px-20;
+    }
+  
+    .form-label-signin {
+      @apply h-14 flex items-end justify-between text-neutral-200 flex-row flex-nowrap w-full px-1;
+    }
+  
+    .form-input-signin {
+      @apply h-10 w-full;
+    }
+  
+    .form-input-signin input {
+      @apply w-full h-full rounded-md border-none box-border px-3 bg-neutral-200;
+    }
+  
+    .form-button-signin {
+      @apply w-full flex items-end justify-center px-20;
+    }
+    
+    .form-button-signin > button {
+      @apply h-12 w-full rounded-3xl bg-neutral-200 text-neutral-900 font-semibold text-xl;
+    }
+  
+    .form-button-signin > button:hover {
+      @apply scale-105;
+    }
+
+    .form-action-signin {
+      @apply h-10 w-full flex justify-center items-end;
+    }
+  
+    .form-action-signin > span {
+      @apply text-neutral-200 cursor-pointer text-sm;
+    }
+  
+    .form-error-message {
+      @apply text-red-600 text-xs mx-1;
+    }
+}

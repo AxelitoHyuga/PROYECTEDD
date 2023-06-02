@@ -1,14 +1,18 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
-import { userReducer } from './reducers/userReducer';
+import { userReducer } from './components/signin/userReducer';
+import { boardsReducer } from './components/board/reducer';
 
 const rootReducer = combineReducers({
-    userReducer
+    user: userReducer,
+    boards: boardsReducer
 });
 
 export const store = configureStore({
     reducer: {
         user: userReducer,
+        boards: boardsReducer
     }
+    // reducer: rootReducer
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
